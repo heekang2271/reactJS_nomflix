@@ -4,8 +4,8 @@ import { moviesApi, tvApi } from "../../api";
 
 export default class extends React.Component {
     state = {
-        movieResult: null,
-        tvResult: null,
+        movieResults: null,
+        tvResults: null,
         searchTerm: "",
         error: null,
         loading: false
@@ -22,13 +22,14 @@ export default class extends React.Component {
         const { searchTerm } = this.state;
         this.setState({
             loading: true
-        })
+        });
         try {
             const {
                 data: {
                     results: movieResults
                 }
             } = await moviesApi.search(searchTerm);
+
             const {
                 data: {
                     results: tvResults
@@ -51,15 +52,9 @@ export default class extends React.Component {
     }
 
     render() {
-        const { movieResult, tvResult, searchTerm, error, loading } = this.state;
+        const { movieResults, tvResults, searchTerm, error, loading } = this.state;
         return (
-            <SearchPresenter
-                movieResult={movieResult}
-                tvResult={tvResult}
-                searchTerm={searchTerm}
-                error={error}
-                loading={loading}
-            />
-        )
+            <SearchPresenter />
+        );
     }
 }

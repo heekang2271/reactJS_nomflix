@@ -9,7 +9,7 @@ export default class extends React.Component {
         popular: null,
         error: null,
         loading: true
-    };
+    }
 
     async componentDidMount() {
         try {
@@ -18,7 +18,7 @@ export default class extends React.Component {
                     results: nowPlaying
                 }
             } = await moviesApi.nowPlaying();
-
+            
             const {
                 data: {
                     results: upcoming
@@ -35,15 +35,16 @@ export default class extends React.Component {
                 nowPlaying,
                 upcoming,
                 popular
-            })
+            });
+
         } catch {
             this.setState({
                 error: "Can't find movies information."
-            })
+            });
         } finally {
             this.setState({
                 loading: false
-            })
+            });
         }
     }
 
@@ -57,6 +58,6 @@ export default class extends React.Component {
                 error={error}
                 loading={loading}
             />
-        )
+        );
     }
 }

@@ -8,20 +8,21 @@ export default class extends React.Component {
         const {
             location: { pathname }
         } = props;
+        
         this.state = {
             result: null,
             error: null,
             loading: true,
             isMovie: pathname.includes("/movie/")
-        };
+        }
     }
 
     async componentDidMount() {
         const {
             match: {
-                params: {id}
+                params: { id }
             },
-            history: { push }
+            history: {push}
         } = this.props;
 
         const { isMovie } = this.state;
@@ -30,8 +31,8 @@ export default class extends React.Component {
             return push("/");
         }
 
-        let result = null;
         try {
+            let result = null;
             if (isMovie) {
                 ({
                     data: result
@@ -41,28 +42,29 @@ export default class extends React.Component {
                     data: result
                 } = await tvApi.showDetail(parsedId));
             }
-        } catch {
             this.setState({
-                error: "Can't find anything."
-            })
-        } finally {
-            this.setState({
-                loading: false,
                 result
             })
+        } catch {
+            this.setState({
+                error: "Can't find anything"
+            });
+        } finally {
+            this.setState({
+                loading: false
+            });
         }
 
     }
 
     render() {
         const { result, error, loading } = this.state;
-        console.log(result);
         return (
             <DetailPresenter
                 result={result}
                 error={error}
                 loading={loading}
             />
-        )
+        );
     }
 }

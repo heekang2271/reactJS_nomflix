@@ -1,3 +1,3 @@
-import TVContainer from "./TVContainer.js";
+import TVContainer from "./TVContainer";
 
 export default TVContainer;

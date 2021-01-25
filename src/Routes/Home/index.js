@@ -1,3 +1,3 @@
-import HomeContainer from "./HomeContainer.js";
+import HomeContainer from "./HomeContainer";
 
 export default HomeContainer;

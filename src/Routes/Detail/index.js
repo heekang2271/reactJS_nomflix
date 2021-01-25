@@ -1,3 +1,3 @@
-import DetailContainer from "./DetailContainer.js";
+import DetailContainer from "./DetailContainer";
 
 export default DetailContainer;
