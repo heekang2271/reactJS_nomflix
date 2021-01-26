@@ -36,7 +36,6 @@ export default class extends React.Component {
                 upcoming,
                 popular
             });
-
         } catch {
             this.setState({
                 error: "Can't find movies information."
